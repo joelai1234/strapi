@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@strapi/design-system/Box';
-import { Flex } from '@strapi/design-system/Flex';
+// import { Flex } from '@strapi/design-system/Flex';
 import { SkipToContent } from '@strapi/design-system/Main';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -11,6 +11,7 @@ const FlexBox = styled(Box)`
 `;
 
 const AppLayout = ({ children, sideNav }) => {
+  console.log(sideNav);
   const { formatMessage } = useIntl();
 
   return (
@@ -18,10 +19,10 @@ const AppLayout = ({ children, sideNav }) => {
       <SkipToContent>
         {formatMessage({ id: 'skipToContent', defaultMessage: 'Skip to content' })}
       </SkipToContent>
-      <Flex alignItems="flex-start">
-        {sideNav}
-        <FlexBox>{children}</FlexBox>
-      </Flex>
+      {/* <Flex alignItems="flex-start"> */}
+      {/* {sideNav} */}
+      <FlexBox>{children}</FlexBox>
+      {/* </Flex> */}
     </Box>
   );
 };
