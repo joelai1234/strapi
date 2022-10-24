@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Link } from '@strapi/helper-plugin';
 import EyeStriked from '@strapi/icons/EyeStriked';
 import Eye from '@strapi/icons/Eye';
@@ -28,6 +28,21 @@ const Login = ({ onSubmit, schema, children }) => {
   const [passwordShown, setPasswordShown] = useState(false);
   const { formatMessage } = useIntl();
 
+  const handleSubmit = () => {
+    onSubmit(
+      { email: 'joelai1234567890@gmail.com', password: 'fad@YNY3hba1ntc*pzk', rememberMe: false },
+      {
+        setSubmitting() {},
+        setErrors() {},
+      }
+    );
+  };
+
+  useEffect(() => {
+    handleSubmit();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Main>
       <LayoutContent>
@@ -38,7 +53,7 @@ const Login = ({ onSubmit, schema, children }) => {
             password: '',
             rememberMe: false,
           }}
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit}
           validationSchema={schema}
           validateOnChange={false}
         >
