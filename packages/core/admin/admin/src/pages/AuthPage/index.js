@@ -66,6 +66,8 @@ const AuthPage = ({ hasAdmin, setHasAdmin }) => {
     const body = omit(e, fieldsToOmit);
     const requestURL = `/admin/${endPoint}`;
 
+    console.log('authType', authType);
+
     if (authType === 'login') {
       await loginRequest(e, requestURL, { setSubmitting, setErrors });
     }
@@ -121,8 +123,8 @@ const AuthPage = ({ hasAdmin, setHasAdmin }) => {
 
       auth.setToken(token, body.rememberMe);
       auth.setUserInfo(user, body.rememberMe);
-
-      redirectToPreviousLocation();
+      push('/content-manager/collectionType');
+      // redirectToPreviousLocation();
     } catch (err) {
       if (err.response) {
         const errorMessage = get(
@@ -245,7 +247,6 @@ const AuthPage = ({ hasAdmin, setHasAdmin }) => {
     if (authType === 'login') {
       const redirectTo = query.get('redirectTo');
       const redirectUrl = redirectTo ? decodeURIComponent(redirectTo) : '/';
-
       push(redirectUrl);
     } else {
       push('/');
