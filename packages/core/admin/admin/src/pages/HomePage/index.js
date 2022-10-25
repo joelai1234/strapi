@@ -3,7 +3,7 @@
  *
  */
 
-import React, { memo, useMemo } from 'react';
+import React, { memo, useMemo, useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
@@ -44,6 +44,11 @@ const HomePage = () => {
 
     push('/plugins/content-type-builder/content-types/create-content-type');
   };
+
+  useEffect(() => {
+    push('/content-manager/collectionType');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const hasAlreadyCreatedContentTypes = useMemo(() => {
     const filterContentTypes = (contentTypes) => contentTypes.filter((c) => c.isDisplayed);
