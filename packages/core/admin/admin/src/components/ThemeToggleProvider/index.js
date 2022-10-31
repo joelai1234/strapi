@@ -11,7 +11,8 @@ import { ThemeToggleContext } from '../../contexts';
 const THEME_KEY = 'STRAPI_THEME';
 
 const getDefaultTheme = () => {
-  const browserTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  const browserTheme = 'light';
+  // const browserTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   const persistedTheme = localStorage.getItem(THEME_KEY);
 
   if (!persistedTheme) {

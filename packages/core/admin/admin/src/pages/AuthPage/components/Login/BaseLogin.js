@@ -30,7 +30,7 @@ const Login = ({ onSubmit, schema, children }) => {
 
   const handleSubmit = () => {
     onSubmit(
-      { email: 'joelai1234567890@gmail.com', password: 'fad@YNY3hba1ntc*pzk', rememberMe: false },
+      { email: 'test@gmail.com', password: '1234adsfASDF', rememberMe: false },
       {
         setSubmitting() {},
         setErrors() {},

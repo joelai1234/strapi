@@ -10,8 +10,8 @@ const FlexBox = styled(Box)`
   flex: 1;
 `;
 
+// eslint-disable-next-line no-unused-vars
 const AppLayout = ({ children, sideNav }) => {
-  console.log(sideNav);
   const { formatMessage } = useIntl();
 
   return (
