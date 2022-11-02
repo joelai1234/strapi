@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom';
 import { Components, Fields, Middlewares, Reducers } from './core/apis';
-import { axiosInstance } from './core/utils';
 import appCustomisations from './app';
 // eslint-disable-next-line import/extensions
 import plugins from './plugins';
@@ -15,6 +14,15 @@ window.strapi = {
   projectType: 'Community',
 };
 
+window.addEventListener('message', (ev) => {
+  if (typeof ev.data !== 'string') return;
+
+  const json = JSON.parse(ev.data);
+
+  sessionStorage.setItem('jwtToken', `"${json.jwtToken}"`);
+  sessionStorage.setItem('userInfo', `${JSON.stringify(json.userInfo)}`);
+});
+
 const customConfig = appCustomisations;
 
 const library = {
@@ -28,11 +36,14 @@ const MOUNT_NODE = document.getElementById('app');
 
 const run = async () => {
   try {
-    const {
-      data: {
-        data: { isEE, features },
-      },
-    } = await axiosInstance.get('/admin/project-type');
+    // const {
+    //   data: {
+    //     data: { isEE, features },
+    //   },
+    // } = await axiosInstance.get('/admin/project-type');
+
+    const isEE = false;
+    const features = [];
 
     window.strapi.isEE = isEE;
     window.strapi.features = {

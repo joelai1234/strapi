@@ -18,7 +18,8 @@ module.exports = () => {
   // to display the tree map of modules
   const env = analyzeBundle ? 'production' : 'development';
   const options = {
-    backend: 'http://localhost:1337',
+    // backend: 'http://localhost:1337',
+    backend: 'https://talfa-api.tokenbricks-dev.com/api/v1/admin/cms',
     adminPath: '/admin/',
   };
   const pluginsPath = getPluginsPath();
